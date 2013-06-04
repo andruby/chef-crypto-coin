@@ -1,5 +1,7 @@
 # crypto-coin cookbook
 
+Chef cookbook to help compile bitcoin based crypto coins.
+
 # Requirements
 
 # Usage
