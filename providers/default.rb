@@ -27,11 +27,19 @@ action :install do
 
   new_resource.updated_by_last_action(repo.updated_by_last_action?)
 
+  src_directory = ::File.join(new_resource.clone_path, 'src')
+
   bash "compile #{new_resource.name}" do
     code          "make -f makefile.unix clean; make -f makefile.unix USE_UPNP= #{new_resource.executable}"
-    cwd           ::File.join(new_resource.clone_path, 'src')
+    cwd           src_directory
     action        :nothing
     notifies      :run, "bash[strip #{new_resource.name}]", :immediately
+  end
+
+  bash "strip #{new_resource.name}" do
+    code          "strip #{new_resource.executable}"
+    cwd           src_directory
+    action        :nothing
   end
 end
 
