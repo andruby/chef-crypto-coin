@@ -25,3 +25,6 @@
 #
 #
 # Include this recipe to get access to the crypto_coin LWRP
+
+
+package "git"
