@@ -71,6 +71,7 @@ action :install do
   template "/etc/init/#{new_resource.executable}.conf" do
     source        "upstart.conf.erb"
     mode          0700
+    cookbook      "crypto-coin"
     variables(
       :user => new_resource.user,
       :group => new_resource.group,
