@@ -1,0 +1,12 @@
+description <%= @executable_name %>
+
+start on runlevel [2345]
+stop on runlevel [016]
+
+setuid <%= @user %>
+setgid <%= @group %>
+
+respawn
+respawn limit 10 60 # 10 times in 60 seconds
+
+exec <%= @executable_path %> -datadir=<%= @data_dir %> -conf=<%= @conf_path %>
