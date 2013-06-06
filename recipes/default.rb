@@ -26,5 +26,21 @@
 #
 # Include this recipe to get access to the crypto_coin LWRP
 
+include_recipe "apt"
 
-package "git"
+# Apt repository with BerkleyDB 4.8 packages
+apt_repository "bitcoin" do
+  uri "http://ppa.launchpad.net/bitcoin/bitcoin/ubuntu"
+  distribution "precise"
+  components ["main"]
+  deb_src true
+  keyserver "keyserver.ubuntu.com"
+  key "8842CE5E"
+end
+
+# Required packages
+package "git-core"
+package "libssl-dev"
+package "libdb4.8-dev"
+package "libdb4.8++-dev"
+package "libboost1.48-all-dev"
