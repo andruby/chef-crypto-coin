@@ -15,6 +15,6 @@ Vagrant.configure("2") do |config|
     chef.json = {}
     chef.log_level = :debug
     chef.add_recipe "build-essential"
-    chef.add_recipe "crypto-coin::bitcoin"
+    chef.add_recipe "crypto-coin::litecoin"
   end
 end
