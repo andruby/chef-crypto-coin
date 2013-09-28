@@ -64,7 +64,7 @@ action :install do
   file conf_file do
     owner         new_resource.user
     group         new_resource.group
-    mode          0400
+    mode          0440
     content       config_content
   end
 
