@@ -6,7 +6,9 @@ stop on runlevel [016]
 setuid <%= @user %>
 setgid <%= @group %>
 
+<% if @respawn_times and @respawn_seconds %>
 respawn
-respawn limit 10 60 # 10 times in 60 seconds
+respawn limit <%= @respawn_times %> <%= @respawn_seconds  %> # <%= @respawn_times %> times in <%= @respawn_seconds  %> seconds
+<% end %>
 
 exec <%= @executable_path %> -datadir=<%= @data_dir %> -conf=<%= @conf_path %>
