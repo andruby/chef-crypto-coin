@@ -78,7 +78,9 @@ action :install do
       :data_dir => new_resource.data_dir,
       :conf_path => conf_file,
       :executable_name => new_resource.executable,
-      :executable_path => ::File.join(new_resource.home, new_resource.executable)
+      :executable_path => ::File.join(new_resource.home, new_resource.executable),
+      :respawn_times => new_resource.respawn_times,
+      :respawn_seconds => new_resource.respawn_seconds
     )
   end
 end
@@ -90,6 +92,8 @@ def set_default_attributes
   @new_resource.executable(@new_resource.executable || "#{@new_resource.name}d")
   @new_resource.clone_path(@new_resource.clone_path || ::File.join('/opt', 'crypto_coins', @new_resource.name))
   @new_resource.data_dir(@new_resource.data_dir || ::File.join(@new_resource.home, 'data'))
+  @new_resource.respawn_times(@new_resource.respawn_times)
+  @new_resource.respawn_seconds(@new_resource.respawn_seconds)
 end
 
 def config_hash

@@ -10,6 +10,9 @@ attribute :clone_path,      :kind_of => String
 attribute :data_dir,        :kind_of => String
 attribute :conf,            :kind_of => Hash, :default => {}
 
+attribute :respawn_times,   :kind_of => String, :default => '10'
+attribute :respawn_seconds, :kind_of => String, :default => '60'
+
 attribute :repository,      :kind_of => String, :required => true
 attribute :revision,        :kind_of => String, :default => 'master'
 
