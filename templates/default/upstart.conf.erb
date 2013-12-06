@@ -1,7 +1,9 @@
 description <%= @executable_name %>
 
+<% if @autostart %>
 start on runlevel [2345]
 stop on runlevel [016]
+<% end %>
 
 setuid <%= @user %>
 setgid <%= @group %>
